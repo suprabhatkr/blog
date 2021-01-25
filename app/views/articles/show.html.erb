@@ -8,6 +8,10 @@
                   method: :delete,
                   data: { confirm: "Are you sure?" } %></li>
 </ul>
+<p>
+	Writer
+	<%= @article.email %>
+</p>
 
 <h2>Comments</h2>
 <%= render @article.comments %>
