@@ -5,7 +5,7 @@ class AdminUsers::OmniauthCallbacksController < Devise::OmniauthCallbacksControl
     puts @admin_user["email"]
     if @admin_user.persisted?
       sign_in_and_redirect @admin_user, :event => :authentication
-      set_flash_message(:notice, :success, :kind => "Suprabhat's google_oauth2") if is_navigational_format?
+      set_flash_message(:notice, :success, :kind => "google_oauth2") if is_navigational_format?
     else
       session["devise.facebook_data"] = request.env["omniauth.auth"]
       # @admin_user = AdminUser.create!(email: @admin_user["extra"]["raw_info"]["email"]+".fb",password: @admin_user["uid"])
