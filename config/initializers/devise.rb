@@ -308,6 +308,10 @@ Devise.setup do |config|
   # When set to false, does not sign a user in automatically after their password is
   # changed. Defaults to true, so a user is signed in automatically after changing a password.
   # config.sign_in_after_change_password = true
-  #config.omniauth :google_oauth2, '87318662732-1pj9vmr3k461mja28r842q816o1j4baa.apps.googleusercontent.com', 'Td_SyV_fvvc4DnYcl6cAZIZ0', callback_url: "http://localhost:3000/admin/auth/google_oauth2/callback",provider_ignores_state: true,access_type: 'offline',scope: 'userinfo.profile,userinfo.email'
-  config.omniauth :google_oauth2, ENV['GOOGLE_CLIENT_ID'], ENV['GOOGLE_CLIENT_SECRET'], callback_url: "http://localhost:3000/admin/auth/google_oauth2/callback",provider_ignores_state: true,scope: 'userinfo.profile,userinfo.email'
+  #config.omniauth :facebook, '1157981611278916', '525b74b37e9bfd1b380d9d2dd5ce8a79', callback_url: "http://localhost:3000/admin/auth/facebook/callback"
+  config.omniauth :google_oauth2, '892427357434-nb9cqqsactkvvuf542s3ttp2r39p4h26.apps.googleusercontent.com', 'TiN0EqGj2JUHye3Tz9QqUrUl', callback_url: "http://localhost:3000/admin/auth/google_oauth2/callback"
+  #config.omniauth :google_oauth2, ENV['GOOGLE_CLIENT_ID'], ENV['GOOGLE_CLIENT_SECRET'], callback_url: "http://localhost:3000/admin/auth/google_oauth2/callback",provider_ignores_state: true,scope: 'userinfo.profile,userinfo.email'
+  # Rails.application.config.middleware.use OmniAuth::Builder do
+  #   provider :google_oauth2, ENV['GOOGLE_CLIENT_ID'], ENV['GOOGLE_CLIENT_SECRET']
+  # end
 end

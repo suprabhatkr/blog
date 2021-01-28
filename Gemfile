@@ -39,6 +39,7 @@ gem "omniauth", "~> 1.9.1"
 gem 'devise-two-factor'
 gem 'rqrcode'
 gem 'figaro'
+gem 'omniauth-facebook'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
