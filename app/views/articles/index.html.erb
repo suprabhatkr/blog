@@ -8,19 +8,15 @@
     </li>
   <% end %>
 </ul>
-
+<%= link_to "ksd",new_admin_user_url %>
 <div>
 <%= link_to "New Article", new_article_path %>
 </div>
 <div>
-<%= link_to "New User","users/new"%>
-</div>
-
-<div>
-<% if current_user %>
-  Signed in as <%= current_user.name %> | <%= link_to "Logout", '/logout' %>
-<% else %>
-  <%= link_to 'Login', '/login' %> | <%= link_to 'Signup', '/signup' %>
-<% end %>
+	<% if user_signed_in? %>
+		<%= current_user.email %> | <%= link_to "sign out", destroy_user_session_path,method: :delete %>
+	<% else %>
+		<%= link_to "sign up", new_user_registration_path %> | <%= link_to "sign in", new_user_session_path %>
+	<% end %>
 </div>
 <%= yield %>

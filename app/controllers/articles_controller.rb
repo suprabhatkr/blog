@@ -1,7 +1,8 @@
 class ArticlesController < ApplicationController
-  before_action :authorize,except: [:index,:show]
+  #before_action :authorize,except: [:index,:show]
   #http_basic_authenticate_with name: "dhh", password: "secret", except: [:index, :show]
-
+  before_action :authenticate_user!, except: [:index,:show]
+  before_action :correct_user, only: [:edit,:update,:destroy]
   def index
   	@articles = Article.all 
   end
@@ -9,18 +10,23 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
   end
   def new
-    @article = Article.new
+    @user = current_user
+    @article = @user.articles.new
   end
 
   def create
-  	puts article_params
-    @article = Article.new(article_params)
+    @user = current_user
+    @article = @user.articles.new(article_params)
 
     if @article.save
       redirect_to @article
     else
       render :new
     end
+  end
+  def correct_user
+    @article = current_user.articles.find_by(id: params[:id])
+    redirect_to article_path, notice: "you are not authorized" if @article.nil?
   end
   def edit
     @article = Article.find(params[:id])

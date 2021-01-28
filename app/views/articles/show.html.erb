@@ -8,10 +8,14 @@
                   method: :delete,
                   data: { confirm: "Are you sure?" } %></li>
 </ul>
+<p>
+	Writer
+	<%= @article.user.email %>
+</p>
 
 <h2>Comments</h2>
-<%= render @article.comments %>
+<%= render @article.usercomments %>
 
 <h2>Add a comment:</h2>
-<%= render 'comments/form' %>
+<%= render 'usercomments/form' %>
 
